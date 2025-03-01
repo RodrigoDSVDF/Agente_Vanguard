@@ -35,7 +35,7 @@ st.markdown(
 load_dotenv()
 
 # ========== BASE DE CONHECIMENTO ==========
-MANUAL_TEXT = """Aqui está um resumo essencial sobre Inteligência Artificial e Inteligência Aumentada:
+MANUAL_TEXT = """Aqui está um resumo essencial sobre o Manual de Alta Performance com I.A:
 
 1. Dependência Excessiva da IA: O uso excessivo pode prejudicar a criatividade e a capacidade de pensamento crítico humano.
 2. Inteligência Aumentada: A tecnologia tem a capacidade de **potencializar** a inteligência humana, não substituí-la.
@@ -48,8 +48,8 @@ MANUAL_TEXT = """Aqui está um resumo essencial sobre Inteligência Artificial e
    - **Mistral**: Open Source, voltado para desenvolvedores.
    - **DeepSeek**: IA chinesa que abalou o mercado.
 6. Transformação Digital: A IA impulsiona eficiência e competitividade.
-7. Mercado de Trabalho: A IA está mudando os empregos, tornando a **atualização constante essencial**.
-8. Inteligência Aumentada no Futuro: Maior colaboração entre humanos e máquinas.
+7. Mercado de Trabalho:  IA está mudando os empregos, tornando a **atualização constante essencial**.
+8. Inteligência Artificial no Futuro: Maior colaboração entre humanos e máquinas.
 9. Uso Estratégico da IA: **Automatize processos repetitivos e foque na criatividade e inovação**.
 10. Equilíbrio entre Tecnologia e Humanidade: A tecnologia **deve ser aliada** do pensamento estratégico humano.
 """
@@ -57,8 +57,8 @@ MANUAL_TEXT = """Aqui está um resumo essencial sobre Inteligência Artificial e
 # ========== CONFIGURAÇÃO DO PROMPT ==========
 def get_prompt():
     return ChatPromptTemplate.from_messages([
-        ("system", f"""Você é um especialista em Inteligência Artificial e Inteligência Aumentada.
-        Seu objetivo é **explicar conceitos sobre IA** e **persuadir o usuário** a entender sua importância no mercado e converter a interação em venda.
+        ("system", f"""Você é um especialista no manual de Alta Performance com IA.
+        Seu objetivo é **explicar conceitos sobre IA** e **persuadir o usuário** a entender sua importância no mercado e **converter a interação em venda**.
         Use respostas claras e objetivas, sem parágrafos longos. **Sempre finalize com uma pergunta estratégica para engajar a conversa.**
         
         Aqui estão informações importantes que você deve usar nas respostas:
