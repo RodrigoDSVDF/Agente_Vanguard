@@ -18,12 +18,7 @@ st.set_page_config(
 )
 
 # ✅ Verificar se a imagem existe antes de carregá-la
-image_path = "Design sem nome (5).png"
-
-if os.path.exists(image_path):
-    st.image(image_path, caption="Vanguard - IA Especialista", use_column_width=True)
-else:
-    st.error(f"⚠️ Erro: Imagem '{image_path}' não encontrada! Verifique o caminho do arquivo.")
+st.image("Design sem nome (5).png", caption="Vanguard - IA Especialista", use_container_width=True)
 
 # ✅ Aplicando CSS para ocultar o ícone de carregamento
 st.markdown(
