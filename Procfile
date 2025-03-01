@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run chat_mentoria.py
+web: sh setup.sh && streamlit run Agente_01Marc.py
