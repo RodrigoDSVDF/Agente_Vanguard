@@ -1,7 +1,7 @@
-
 import streamlit as st
 import os
 import time
+import random
 from langchain_openai import ChatOpenAI
 from langchain.chains import LLMChain
 from langchain.memory import ConversationBufferWindowMemory
@@ -11,14 +11,21 @@ from dotenv import load_dotenv
 
 # ✅ Configuração da página deve ser o PRIMEIRO comando Streamlit
 st.set_page_config(
-    st.image("sua_imagem.png", caption="Vanguard - IA Especialista", use_column_width=True),
     page_title="Vanguard - IA Especialista",
     page_icon="🤖",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# Aplicando CSS para ocultar o ícone de carregamento
+# ✅ Verificar se a imagem existe antes de carregá-la
+image_path = "Design sem nome (5).png"
+
+if os.path.exists(image_path):
+    st.image(image_path, caption="Vanguard - IA Especialista", use_column_width=True)
+else:
+    st.error(f"⚠️ Erro: Imagem '{image_path}' não encontrada! Verifique o caminho do arquivo.")
+
+# ✅ Aplicando CSS para ocultar o ícone de carregamento
 st.markdown(
     """
     <style>
@@ -29,14 +36,14 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Carregar variáveis de ambiente
+# ✅ Carregar variáveis de ambiente
 load_dotenv()
 
-# ========== BASE DE CONHECIMENTO DIRETA ==========
-MANUAL_TEXT = """Aqui está um resumo essencial sobre Inteligência Artificial e conceitos sobre a Inteligência Aumentada:
+# ========== BASE DE CONHECIMENTO ==========
+MANUAL_TEXT = """Aqui está um resumo essencial sobre Inteligência Artificial e Inteligência Aumentada:
 
 1. Dependência Excessiva da IA: O uso excessivo pode prejudicar a criatividade e a capacidade de pensamento crítico humano.
-2. Inteligência Aumentada: A tecnologia tem a capacidade **potencializar** a inteligência humana, não substituí-la.
+2. Inteligência Aumentada: A tecnologia tem a capacidade de **potencializar** a inteligência humana, não substituí-la.
 3. Aprendizado Otimizado: IA permite ensino personalizado, mas é preciso evitar a dependência total de algoritmos.
 4. Automação Inteligente: Reduz tarefas repetitivas, liberando tempo para atividades mais estratégicas.
 5. Peculiaridades dos Modelos de IA:
@@ -96,10 +103,9 @@ class Chatbot:
             "Qual seu maior desafio hoje que a IA poderia resolver?",
             "Você gostaria de conhecer um método comprovado para usar IA na produtividade?"
         ]
-        import random
-        pergunta = random.choice(perguntas_estrategicas)
-
-        return f"{response_text} {pergunta}"
+        
+        response_text += f" {random.choice(perguntas_estrategicas)}"
+        return response_text
 
 # ========== INTERFACE STREAMLIT ==========
 st.markdown(
@@ -119,7 +125,7 @@ st.markdown(
 if "chatbot" not in st.session_state:
     st.session_state.chatbot = Chatbot()
     st.session_state.chat_history = [
-        AIMessage(content="Olá! Eu sou o Vanguard, especialista no Manual de Alta Performance com IA. Qual o seu nome?")
+        AIMessage(content="E aí, beleza? Que bom te ver aqui! Eu sou o Vanguard, especialista no Manual de Alta Performance com IA. Como posso te chamar?")
     ]
 
 for msg in st.session_state.chat_history:
